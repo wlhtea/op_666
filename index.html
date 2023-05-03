@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>计算工资</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<style>
+    @media (max-width: 768px) {
+      .button {
+      width: 76%;
+      height: 20%;
+  }
+    }
+
+  .button {
+      width: 47%;
+      height: 20%;
+  }
+
+
+</style>
+<body>
+<div style="">
+    <div style="width: 500px;height: 40px;margin-left: auto;margin-right: auto;"><h1>工资计算器</h1></div>
+</div>
+<br>
+    <form>
+        <label for="hours" class="container">工作小时数：</label>
+        <input type="number" step="0.01" id="hours" name="hours" required><br><br>
+
+        <label for="hourlyRate">时薪：&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+        <input type="number" step="0.01" id="hourlyRate" name="hourlyRate" required><br><br>
+
+        <label for="overtimeHours">加班小时数：</label>
+        <input type="number" step="0.01" id="overtimeHours" name="overtimeHours" required><br><br>
+
+        <label for="overtimeRate">加班时薪：&nbsp;&nbsp;&nbsp;&nbsp;</label>
+        <input type="number" step="0.01" id="overtimeRate" name="overtimeRate" required><br><br>
+
+        <label for="bonus">奖金：&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+        <input type="number" step="0.01" id="bonus" name="bonus" required><br><br>
+
+        <input class="button" type="submit" value="计算工资">
+    </form>
+
+    <script>
+        document.querySelector('form').addEventListener('submit', function(e) {
+            e.preventDefault(); // 阻止表单提交
+
+            // 获取输入的值
+            var hours = parseFloat(document.getElementById('hours').value);
+            var hourlyRate = parseFloat(document.getElementById('hourlyRate').value);
+            var overtimeHours = parseFloat(document.getElementById('overtimeHours').value);
+            var overtimeRate = parseFloat(document.getElementById('overtimeRate').value);
+            var bonus = parseFloat(document.getElementById('bonus').value);
+
+            // 计算工资
+            var regularPay = hours * hourlyRate;
+            var overtimePay = overtimeHours * overtimeRate;
+            var totalPay = regularPay + overtimePay + bonus;
+
+
+            // 显示结果
+            alert("工资总额为：" + totalPay.toFixed(2));
+        });
+    </script>
+</body>
+</html>
